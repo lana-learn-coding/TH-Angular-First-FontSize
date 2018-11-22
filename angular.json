@@ -129,6 +129,133 @@
           }
         }
       }
+    },
+    "toandz": {
+      "root": "projects/toandz/",
+      "sourceRoot": "projects/toandz/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/toandz",
+            "index": "projects/toandz/src/index.html",
+            "main": "projects/toandz/src/main.ts",
+            "polyfills": "projects/toandz/src/polyfills.ts",
+            "tsConfig": "projects/toandz/tsconfig.app.json",
+            "assets": [
+              "projects/toandz/src/favicon.ico",
+              "projects/toandz/src/assets"
+            ],
+            "styles": [
+              "projects/toandz/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/toandz/src/environments/environment.ts",
+                  "with": "projects/toandz/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "toandz:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "toandz:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "toandz:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/toandz/src/test.ts",
+            "polyfills": "projects/toandz/src/polyfills.ts",
+            "tsConfig": "projects/toandz/tsconfig.spec.json",
+            "karmaConfig": "projects/toandz/karma.conf.js",
+            "styles": [
+              "projects/toandz/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/toandz/src/favicon.ico",
+              "projects/toandz/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/toandz/tsconfig.app.json",
+              "projects/toandz/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "toandz-e2e": {
+      "root": "projects/toandz-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/toandz-e2e/protractor.conf.js",
+            "devServerTarget": "toandz:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "toandz:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/toandz-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "anglTest2"

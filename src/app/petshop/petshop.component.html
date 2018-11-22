@@ -1,0 +1,8 @@
+<label for="name"></label>
+<input #name type="text" id="name">
+<label #pic for="pic"></label>
+<input type="text" id="pic">
+<button (click)="changeName(name.value);changePic(pic.value)">Button</button>
+<br>
+<h3>Pet name: {{petName}}</h3>
+<img [src]="petImage" style="max-width: 100%">
